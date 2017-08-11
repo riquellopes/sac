@@ -25,5 +25,10 @@ class RecordCalled(db.Model):
     reason_id = db.Column(db.Integer, db.ForeignKey(Reason.id))
     text = db.Column(db.Text, nullable=False)
 
+    # relationships
+    type = db.relationship("TypeCalled")
+    country = db.relationship("Country")
+    reason = db.relationship("Reason")
+
     created_date = db.Column(db.DateTime, default=datetime.now())
     update_date = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
