@@ -23,7 +23,7 @@ class RecordCalled(db.Model):
     type_called_id = db.Column(db.Integer, db.ForeignKey(TypeCalled.id))
     country_id = db.Column(db.Integer, db.ForeignKey(Country.id))
     reason_id = db.Column(db.Integer, db.ForeignKey(Reason.id))
-    currency = db.Column(db.Text, nullable=False)
+    text = db.Column(db.Text, nullable=False)
 
     created_date = db.Column(db.DateTime, default=datetime.now())
     update_date = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
