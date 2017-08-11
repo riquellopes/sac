@@ -1,12 +1,16 @@
 # coding: utf:8
 from flask import jsonify, make_response
 from flask_restful import Resource
-from app.models import TypeCalled, Country, Reason
-from app.schemas import TypeCalledSchema, CountrySchema, ReasonSchema
+from app.models import TypeCalled, Country, Reason, RecordCalled
+from app.schemas import TypeCalledSchema, CountrySchema, ReasonSchema, RecordCalledSchema
 
 
-class RecordCalledResource(Resource):
-    pass
+class RecordCalledListResource(Resource):
+
+    def get(self):
+        schema = RecordCalledSchema(many=True)
+        data = schema.dump(RecordCalled.query.all())
+        return make_response(jsonify(results=data.data))
 
 
 # Complements.

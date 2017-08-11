@@ -2,7 +2,8 @@
 from flask_restful import Api
 from app import app as application
 from app.db import db
-from app.resources import TypeCalledListResource, CountryListResource, ReasonListResource
+from app.resources import (
+    TypeCalledListResource, CountryListResource, ReasonListResource, RecordCalledListResource)
 
 
 def setup_app():
@@ -12,6 +13,7 @@ def setup_app():
     api.add_resource(TypeCalledListResource, "/type-called/", methods=['GET'])
     api.add_resource(CountryListResource, "/countries/", methods=['GET'])
     api.add_resource(ReasonListResource, "/reasons/", methods=['GET'])
+    api.add_resource(RecordCalledListResource, "/recordcalled/", methods=['GET'])
 
     return application
 

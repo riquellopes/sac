@@ -38,3 +38,4 @@ class RecordCalledFactory(Factory):
     type = SubFactory(TypeCalledFactory)
     country = SubFactory(CountryFactory)
     reason = SubFactory(ReasonFactory)
+    text = "Como faço para anunciar um item?"

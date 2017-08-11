@@ -59,5 +59,11 @@ def test_service_reasons_should_return_a_list_of_reasons(test_client, reasons):
     assert response.headers.get("Content-Type") == "application/json"
 
 
-def test_(records_called):
-    pass
+def test_service_record_should_return_a_list_of_records(test_client, records_called):
+    response = test_client.get("/v1/recordcalled/")
+
+    assert response.status_code == 200
+    data = json.loads(response.data.decode('utf-8'))
+
+    assert len(data.get("results")) == 5
+    assert response.headers.get("Content-Type") == "application/json"
