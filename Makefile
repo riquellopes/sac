@@ -8,10 +8,16 @@ build:
 	docker-compose stop
 	docker-compose build
 
-migrate:
+upgrade:
+	# Similar to manage.py migrate of django
 	docker-compose stop
-	docker-compose run -rm backend python3 manage.py db upgrade
+	docker-compose run --rm backend python3 manage.py db upgrade
 
-makemigrations:
+migrate:
+	# Similar to manage.py makemigrations of django
 	docker-compose stop
-	docker-compose run -rm backend python3 manage.py db migrate
+	docker-compose run --rm backend python3 manage.py db migrate
+
+migration-help:
+	docker-compose stop
+	docker-compose run --rm backend python3 manage.py db --help
