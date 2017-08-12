@@ -1,8 +1,12 @@
 # coding: utf:8
+import http
 from flask import jsonify, make_response
 from flask_restful import Resource
+from webargs.flaskparser import use_args
 from app.models import TypeCalled, Country, Reason, RecordCalled
 from app.schemas import TypeCalledSchema, CountrySchema, ReasonSchema, RecordCalledSchema
+
+from app.db import db
 
 
 class RecordCalledListResource(Resource):
@@ -11,6 +15,16 @@ class RecordCalledListResource(Resource):
         schema = RecordCalledSchema(many=True)
         data = schema.dump(RecordCalled.query.all())
         return make_response(jsonify(results=data.data))
+
+    @use_args(
+        RecordCalledSchema(
+            strict=True, only=("type_called_id", "country_id", "reason_id", "text")), locations=("json", ))
+    def post(self, recordcalled):
+        db.session.add(recordcalled)
+        db.session.commit()
+
+        return make_response(
+            jsonify(mensagem="record saved successfully"), http.HTTPStatus.CREATED)
 
 
 # Complements.

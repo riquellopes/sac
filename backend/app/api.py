@@ -13,7 +13,7 @@ def setup_app():
     api.add_resource(TypeCalledListResource, "/type-called/", methods=['GET'])
     api.add_resource(CountryListResource, "/countries/", methods=['GET'])
     api.add_resource(ReasonListResource, "/reasons/", methods=['GET'])
-    api.add_resource(RecordCalledListResource, "/recordcalled/", methods=['GET'])
+    api.add_resource(RecordCalledListResource, "/recordcalled/", methods=['GET', 'POST'])
 
     return application
 

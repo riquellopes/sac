@@ -5,24 +5,24 @@ from app.db import db
 
 class TypeCalled(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    type = db.Column(db.String(100), nullable=False)
+    type = db.Column(db.String(100), nullable=False, unique=True)
 
 
 class Country(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    country = db.Column(db.String(100), nullable=False)
+    country = db.Column(db.String(100), nullable=False, unique=True)
 
 
 class Reason(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    reason = db.Column(db.String(100), nullable=False)
+    reason = db.Column(db.String(100), nullable=False, unique=True)
 
 
 class RecordCalled(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    type_called_id = db.Column(db.Integer, db.ForeignKey(TypeCalled.id))
-    country_id = db.Column(db.Integer, db.ForeignKey(Country.id))
-    reason_id = db.Column(db.Integer, db.ForeignKey(Reason.id))
+    type_called_id = db.Column(db.Integer, db.ForeignKey(TypeCalled.id), nullable=False)
+    country_id = db.Column(db.Integer, db.ForeignKey(Country.id), nullable=False)
+    reason_id = db.Column(db.Integer, db.ForeignKey(Reason.id), nullable=False)
     text = db.Column(db.Text, nullable=False)
 
     # relationships

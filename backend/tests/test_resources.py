@@ -1,27 +1,21 @@
 import json
 import pytest
-from .factories import (
-    TypeCalledFactory, CountryFactory, ReasonFactory, RecordCalledFactory, )
+from .factories import TypeCalledFactory, CountryFactory, ReasonFactory, RecordCalledFactory
 
 
 @pytest.fixture
 def types():
-    TypeCalledFactory.create()
-    TypeCalledFactory.create(type="chat")
-    TypeCalledFactory.create(type="email")
+    TypeCalledFactory.create_batch(3)
 
 
 @pytest.fixture
 def countries():
-    CountryFactory.create()
-    CountryFactory.create(country="ES")
+    CountryFactory.create_batch(2)
 
 
 @pytest.fixture
 def reasons():
-    ReasonFactory.create()
-    ReasonFactory.create(reason="elogios")
-    ReasonFactory.create(reason="sugestões")
+    ReasonFactory.create_batch(3)
 
 
 @pytest.fixture
