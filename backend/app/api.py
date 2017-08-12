@@ -1,5 +1,6 @@
 # coding: utf-8
 from flask_restful import Api
+from flask_cors import CORS
 from app import app as application
 from app.db import db
 from app.resources import (
@@ -8,6 +9,7 @@ from app.resources import (
 
 def setup_app():
     db.init_app(application)
+    CORS(application)
 
     api = Api(application, prefix="/v1")
     api.add_resource(TypeCalledListResource, "/type-called/", methods=['GET'])
