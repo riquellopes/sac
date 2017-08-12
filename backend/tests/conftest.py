@@ -1,13 +1,18 @@
 import pytest
+# from sqlalchemy import orm
 from app.api import app as application
 from app.api import db
+
+# Session = db.scoped_session(orm.sessionmaker())
 
 
 @pytest.fixture(scope='session')
 def app(request):
     ctx = application.app_context()
+    ctx.app.config['DEBUG'] = True
     ctx.app.config['TESTING'] = True
     ctx.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+
     ctx.push()
 
     def teardown():
@@ -30,5 +35,6 @@ def build_db(app):
 @pytest.fixture(scope='function', autouse=True)
 def rollback(app, request):
     def fin():
-        db.session.rollback()
+        db.drop_all()
+        db.create_all()
     request.addfinalizer(fin)
