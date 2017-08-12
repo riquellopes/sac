@@ -1,0 +1,30 @@
+{
+  "name": "olx-challege",
+  "version": "1.0.0",
+  "description": "Simple frontend.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/riquellopes/sac.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Henrique Lopes",
+  "bugs": {
+    "url": "https://github.com/riquellopes/sac/issues"
+  },
+  "homepage": "https://github.com/riquellopes/sac#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router": "^3.0.2",
+    "react-scripts": "1.0.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
