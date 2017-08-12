@@ -21,3 +21,9 @@ migrate:
 migration-help:
 	docker-compose stop
 	docker-compose run --rm backend python3 manage.py db --help
+
+olx-backend:
+	docker exec -it olx-sac-backend sh
+
+olx-fronend:
+	docker exec -it olx-sac-frontend sh
