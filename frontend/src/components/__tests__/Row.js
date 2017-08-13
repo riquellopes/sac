@@ -43,6 +43,6 @@ describe("Row Component", function(){
             <Row {...row}/>
         )
 
-        expect(wrapper.find("td").last().text()).to.equal("2017-08-12");
+        expect(wrapper.find("td").last().text()).to.equal("2017-8-13 04:24:25");
     });
 })
