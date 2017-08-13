@@ -11,7 +11,8 @@ class Form extends Component {
             type_called_id: 0,
             country_id: 0,
             reason_id: 0,
-            text: ""
+            text: "",
+            display: "none"
         }
 
         this.handlerSubmit = this.handlerSubmit.bind(this);
@@ -19,7 +20,7 @@ class Form extends Component {
     handlerSubmit(event) {
         event.preventDefault();
 
-        console.info(this.state)
+        console.info(this.state);
 
         fetch("http://localhost:5000/v1/recordcalled/", {
                 method: "POST",
@@ -32,12 +33,22 @@ class Form extends Component {
                 return response.json()
             })
             .then((json) => {
-                // After create
-                console.log(json)
+                this.beforeResponse(json);
             })
             .catch((error) => {
                 console.error("Fail", error);
             });
+    }
+
+    beforeResponse(response){
+        this.refs.form.reset();
+        this.setState({
+            type_called_id: 0,
+            country_id: 0,
+            reason_id: 0,
+            text: "",
+            display: "block"
+        });
     }
 
     handlerTextArea(event){
@@ -56,42 +67,52 @@ class Form extends Component {
         this.setState({reason_id: event.target.value});
     }
 
+    handleClick(event){
+        this.setState({"display": "none"});
+    }
+
     render(){
         return (
-            <form onSubmit={this.handlerSubmit}>
-
-                <Select label="Tipo"
-                        name="type"
-                        target="type-called"
-                        setOption={this.handlerType.bind(this)}/>
-                <Select label="Cidade"
-                        name="country"
-                        target="countries"
-                        setOption={this.handlerCountry.bind(this)}/>
-                <Select label="Motivo"
-                        target="reasons"
-                        name="reason"
-                        setOption={this.handlerReason.bind(this)}/>
-
-                <div className="field">
-                  <label className="label">Messagem: </label>
-                  <div className="control">
-                    <textarea className="textarea"
-                              placeholder="Informações sobre o contato."
-                              name="text"
-                              value={this.state.text}
-                              onChange={this.handlerTextArea.bind(this)} required></textarea>
-                  </div>
+            <div>
+                <div className="notification is-success" style={{display:this.state.display}}>
+                  <button className="delete" onClick={this.handleClick.bind(this)}></button>
+                  Atendimento registrado com sucesso.
                 </div>
-                <br />
-                <div className="field">
-                    <div className="control">
-                        <p className="control">
-                            <input type="submit" value="salvar" className="button is-primary"/>
-                        </p>
+                <form onSubmit={this.handlerSubmit} ref="form">
+
+                    <Select label="Tipo"
+                            name="type"
+                            target="type-called"
+                            setOption={this.handlerType.bind(this)}/>
+                    <Select label="Cidade"
+                            name="country"
+                            target="countries"
+                            setOption={this.handlerCountry.bind(this)}/>
+                    <Select label="Motivo"
+                            target="reasons"
+                            name="reason"
+                            setOption={this.handlerReason.bind(this)}/>
+
+                    <div className="field">
+                      <label className="label">Messagem: </label>
+                      <div className="control">
+                        <textarea className="textarea"
+                                  placeholder="Informações sobre o contato."
+                                  name="text"
+                                  value={this.state.text}
+                                  onChange={this.handlerTextArea.bind(this)} required></textarea>
+                      </div>
                     </div>
-                </div>
-            </form>
+                    <br />
+                    <div className="field">
+                        <div className="control">
+                            <p className="control">
+                                <input type="submit" value="salvar" className="button is-primary"/>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
         )
     }
 }

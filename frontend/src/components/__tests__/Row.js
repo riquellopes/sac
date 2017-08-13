@@ -11,7 +11,7 @@ describe("Row Component", function(){
     let row = {
         "id": 1,
         "text": "xxxx",
-        "created_date": "2017-08-12",
+        "created_date": "2017-08-13T04:24:25.872240+00:00",
         "type": {
             type: 1
         },
