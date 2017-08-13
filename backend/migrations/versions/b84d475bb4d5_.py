@@ -48,7 +48,7 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id'))
 
     op.bulk_insert(type_called_table, [
-        {'id': 1, 'type': 'telefone'},
+        {'id': 1, 'type': 'Telefone'},
         {'id': 2, 'type': 'Email'},
         {'id': 3, 'type': 'Chat'},
     ])
@@ -59,9 +59,9 @@ def upgrade():
     ])
 
     op.bulk_insert(reason_table, [
-        {'id': 1, 'reason': 'dúvidas'},
-        {'id': 2, 'reason': 'elogios'},
-        {'id': 3, 'reason': 'sugestões'},
+        {'id': 1, 'reason': 'Dúvidas'},
+        {'id': 2, 'reason': 'Elogios'},
+        {'id': 3, 'reason': 'Sugestões'},
     ])
     # ### end Alembic commands ###
 
