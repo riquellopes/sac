@@ -25,5 +25,13 @@ migration-help:
 olx-backend:
 	docker exec -it olx-sac-backend sh
 
-olx-fronend:
+olx-frontend:
 	docker exec -it olx-sac-frontend sh
+
+backend-test:
+	docker-compose stop
+	docker-compose run --rm backend pytest tests/ -s -r a --color=yes -vvv
+
+backend-test-cov:
+	docker-compose stop
+	docker-compose run --rm backend pytest tests/ --cov=app -s
