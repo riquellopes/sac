@@ -14,6 +14,7 @@ ReactDOM.render((
           <Route path="/" component={App}>
               <IndexRoute component={Home}/>
               <Route path="create" component={Create} />
+              <Route path="*" component={Home} />
           </Route>
       </Router>
   ),
