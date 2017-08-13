@@ -26,8 +26,8 @@ class Select extends Component {
               <label className="label">{this.props.label}:</label>
               <div className="control">
                 <div className="select">
-                  <select name={name} onChange={this.props.setOption}>
-                    <option value="0">Selecione uma opção</option>
+                  <select name={name} onChange={this.props.setOption} required>
+                    <option value="">Selecione uma opção</option>
                     {this.state.options.map((item, index) => <option value={item.id}
                                                                      key={index}>{item[name]}</option>)}
                   </select>
@@ -36,6 +36,12 @@ class Select extends Component {
             </div>
         )
     }
+}
+
+Select.propTypes = {
+    label: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    target: React.PropTypes.string.isRequired
 }
 
 export default Select

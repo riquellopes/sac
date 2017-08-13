@@ -80,10 +80,10 @@ class Form extends Component {
                               placeholder="Informações sobre o contato."
                               name="text"
                               value={this.state.text}
-                              onChange={this.handlerTextArea.bind(this)}></textarea>
+                              onChange={this.handlerTextArea.bind(this)} required></textarea>
                   </div>
                 </div>
-
+                <br />
                 <div className="field">
                     <div className="control">
                         <p className="control">
