@@ -1,0 +1,10 @@
+version: '2'
+services:
+    frontend:
+        command: node server.js
+        expose:
+          - 8080
+        ports:
+          - 8080:8080
+        environment:
+          PORT: 8080

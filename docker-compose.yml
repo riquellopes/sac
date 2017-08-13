@@ -21,14 +21,8 @@ services:
         container_name: olx-sac-frontend
         volumes:
           - ./frontend:/frontend
-        expose:
-          - 8080
-          - 3000
-          - 8081
-        ports:
-          - 3000:3000
+          - /frontend/node_modules
         depends_on:
           - backend
         links:
           - backend
-        command: npm run start

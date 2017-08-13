@@ -14,8 +14,9 @@
   "bugs": {
     "url": "https://github.com/riquellopes/sac/issues"
   },
-  "homepage": "https://github.com/riquellopes/sac#readme",
+  "homepage": "/",
   "dependencies": {
+    "express": "^4.15.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.2",

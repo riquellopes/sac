@@ -7,16 +7,15 @@ com Flask. E o **SacFrontend** que é uma [spa](https://en.wikipedia.org/wiki/Si
 ##### Montando ambiente:
 
 ```bash
-    make build
-    make upgrade # Utilizado para criar o banco, e definir informações iniciais.
+    make install
 ```
 
 ##### Para levantar os containers:
 
 ```bash
-    make up
+    make up # Após basta acessar http://localhost:8080/
 ```
-##### Para acessar um container expecifico:
+##### Para acessar um container específico:
 
 ```bash
     make olx-backend or
@@ -34,5 +33,6 @@ com Flask. E o **SacFrontend** que é uma [spa](https://en.wikipedia.org/wiki/Si
 #### Outros
 
 ```bash
-    make migrate # Cria um nova migração
+    make migrate # Cria uma nova migração
+    make upgrade # Utilizado para criar o banco, e definir informações iniciais.
 ```
