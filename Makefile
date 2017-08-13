@@ -35,3 +35,7 @@ backend-test:
 backend-test-cov:
 	docker-compose stop
 	docker-compose run --rm backend pytest tests/ --cov=app -s
+
+front-end-test:
+	docker-compose stop
+	docker-compose run --rm frontend npm test
