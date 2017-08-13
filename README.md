@@ -34,5 +34,5 @@ com Flask. E o **SacFrontend** que é uma [spa](https://en.wikipedia.org/wiki/Si
 #### Outros
 
 ```bash
-    make migrate or # Cria um nova migração
+    make migrate # Cria um nova migração
 ```
