@@ -56,3 +56,7 @@ front-end-test:
 front-end-build:
 	docker-compose stop
 	docker-compose run --rm frontend npm run build
+
+shell:
+	docker-compose stop
+	docker-compose run --rm backend python3 manage.py shell
