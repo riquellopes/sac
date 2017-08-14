@@ -13,7 +13,9 @@ class RecordCalledListResource(Resource):
 
     def get(self):
         schema = RecordCalledSchema(many=True)
-        data = schema.dump(RecordCalled.query.all())
+        data = schema.dump(RecordCalled.query.order_by(
+            RecordCalled.created_date.desc()
+        ).all())
         return make_response(jsonify(results=data.data))
 
     @use_args(

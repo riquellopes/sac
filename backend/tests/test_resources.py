@@ -61,3 +61,13 @@ def test_service_record_should_return_a_list_of_records(test_client, records_cal
 
     assert len(data.get("results")) == 5
     assert response.headers.get("Content-Type") == "application/json"
+
+
+def test_should_get_a_empty_result_list_when_no_data_recorded(test_client):
+    response = test_client.get("/v1/recordcalled/")
+
+    assert response.status_code == 200
+    data = json.loads(response.data.decode('utf-8'))
+
+    assert len(data.get("results")) == 0
+    assert response.headers.get("Content-Type") == "application/json"
